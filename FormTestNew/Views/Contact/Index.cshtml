@@ -1,0 +1,45 @@
+﻿@using System.Data;
+@model FormTestNew.Models.FormDataModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Form Information</h2>
+
+<table class="st-5">
+    @{
+        if (ViewBag.users != null)
+        {
+            <thead>
+            <td><strong>Id</strong></td>
+            <td><strong>Name</strong></td>
+            <td><strong>Date of Birth</strong></td>
+            <td><strong>Email Address</strong></td>
+            <td><strong>Phone Number</strong></td>
+            </thead>
+            foreach (FormTestNew.Models.FormDataModel user in ViewBag.users)
+            {
+            <tr>
+                <td> @user.Id</td>
+                <td> @user.Name</td>
+                <td> @user.DOB</td>
+                <td> @user.Email</td>
+                <td> @user.Phone</td>
+            </tr>
+
+            }
+        }
+    }
+
+
+</table>
+<h3>@ViewBag.Message</h3>
+<form action="/Contact/Index" method="post" class="st-3">
+    <input type="submit" value="Save CSV" class="btn submit" />
+</form>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
